@@ -1,0 +1,26 @@
+{
+    "type": "java",
+    "name": "Main",
+    "request": "launch",
+    "mainClass": "Main",
+    "classPaths": [
+        "bin",
+        "lib/java-cup-11b-runtime.jar"
+    ],
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "Main",
+            "projectName": "Analizador-sintactico_404f3d08"
+        },
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "Main",
+            "projectName": "Analizador-sintactico"
+        }
+    ]
+}

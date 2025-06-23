@@ -36,10 +36,15 @@ public class Main {
                 "fin\n";
             
             // Escribir código de prueba a archivo
-            FileWriter writer = new FileWriter("test_burbuja.txt");
-            writer.write(codigoPrueba);
-            writer.close();
             
+            //ESTA PARTE SE USA SI SE QUIERE CREAR UN ARCHIVO DE PRUEBA Y LEERLO DIRECTAMENTE (SE DEBE COMENTAR LA LINEA QUE LEE example.txt)
+
+            // FileWriter writer = new FileWriter("test_burbuja.txt");
+            // writer.write(codigoPrueba);
+            // writer.close();
+            // FileReader reader = new FileReader("example.txt");
+
+
             // Leer archivo y analizarlo
             FileReader reader = new FileReader("example.txt");
             
