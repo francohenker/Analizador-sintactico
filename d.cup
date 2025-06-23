@@ -1,0 +1,101 @@
+import java_cup.runtime.*;
+
+/* Declaración de terminales (tokens) */
+terminal INICIO, FIN, ENTERO, SI, SINO, MIENTRAS, LEER, IMPRIMIR, INTERCAMBIAR;
+terminal IGUAL, DIFERENTE, MENORIGUAL, MAYORIGUAL, ASIG, MENOR, MAYOR;
+terminal SUMA, RESTA, MULT, DIV;
+terminal PARIZQ, PARDER, LLAVEIZQ, LLAVEDER, PUNTOYCOMA, COMA;
+terminal Integer NUMERO;
+terminal String IDENT;
+
+/* Declaración de no terminales */
+non terminal programa;
+non terminal lista_declaraciones;
+non terminal declaracion;
+non terminal lista_variables;
+non terminal lista_sentencias;
+non terminal sentencia;
+non terminal sentencia_asignacion;
+non terminal sentencia_si;
+non terminal sentencia_mientras;
+non terminal sentencia_leer;
+non terminal sentencia_imprimir;
+non terminal sentencia_intercambiar;
+non terminal bloque;
+non terminal expresion;
+non terminal expresion_relacional;
+non terminal expresion_aritmetica;
+non terminal termino;
+non terminal factor;
+non terminal operador_relacional;
+
+/* Precedencia de operadores */
+precedence left SUMA, RESTA;
+precedence left MULT, DIV;
+precedence left IGUAL, DIFERENTE, MENOR, MAYOR, MENORIGUAL, MAYORIGUAL;
+precedence nonassoc SINO;
+
+/* Gramática */
+start with programa;
+
+programa ::= INICIO lista_declaraciones lista_sentencias FIN
+           | INICIO lista_sentencias FIN;
+
+lista_declaraciones ::= lista_declaraciones declaracion
+                      | declaracion;
+
+declaracion ::= ENTERO IDENT PUNTOYCOMA
+              | ENTERO IDENT COMA lista_variables PUNTOYCOMA;
+
+lista_variables ::= lista_variables COMA IDENT
+                  | IDENT;
+
+lista_sentencias ::= lista_sentencias sentencia
+                   | sentencia;
+
+sentencia ::= sentencia_asignacion
+            | sentencia_si
+            | sentencia_mientras
+            | sentencia_leer
+            | sentencia_imprimir
+            | sentencia_intercambiar;
+
+sentencia_asignacion ::= IDENT ASIG expresion PUNTOYCOMA;
+
+sentencia_si ::= SI PARIZQ expresion_relacional PARDER bloque
+               | SI PARIZQ expresion_relacional PARDER bloque SINO bloque;
+
+sentencia_mientras ::= MIENTRAS PARIZQ expresion_relacional PARDER bloque;
+
+sentencia_leer ::= LEER PARIZQ IDENT PARDER PUNTOYCOMA;
+
+sentencia_imprimir ::= IMPRIMIR PARIZQ expresion_aritmetica PARDER PUNTOYCOMA;
+
+sentencia_intercambiar ::= INTERCAMBIAR PARIZQ IDENT COMA IDENT PARDER PUNTOYCOMA;
+
+bloque ::= LLAVEIZQ lista_sentencias LLAVEDER
+         | sentencia;
+
+expresion ::= expresion_aritmetica
+            | expresion_relacional;
+
+expresion_relacional ::= expresion_aritmetica operador_relacional expresion_aritmetica;
+
+operador_relacional ::= IGUAL
+                      | DIFERENTE
+                      | MENOR
+                      | MAYOR
+                      | MENORIGUAL
+                      | MAYORIGUAL;
+
+expresion_aritmetica ::= expresion_aritmetica SUMA termino
+                       | expresion_aritmetica RESTA termino
+                       | termino;
+
+termino ::= termino MULT factor
+          | termino DIV factor
+          | factor;
+
+factor ::= NUMERO
+         | IDENT
+         | PARIZQ expresion_aritmetica PARDER;
