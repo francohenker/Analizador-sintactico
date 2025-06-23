@@ -37,7 +37,7 @@ public class Main {
             
             // Escribir código de prueba a archivo
             
-            //ESTA PARTE SE USA SI SE QUIERE CREAR UN ARCHIVO DE PRUEBA Y LEERLO DIRECTAMENTE (SE DEBE COMENTAR LA LINEA QUE LEE example.txt)
+            //ESTA PARTE SE USA SI SE QUIERE CREAR UN ARCHIVO DE PRUEBA Y LEERLO DIRECTAMENTE (SE DEBE COMENTAR LA LINEA QUE LEE burbuja.txt)
 
             // FileWriter writer = new FileWriter("test_burbuja.txt");
             // writer.write(codigoPrueba);
@@ -46,7 +46,7 @@ public class Main {
 
 
             // Leer archivo y analizarlo
-            FileReader reader = new FileReader("example.txt");
+            FileReader reader = new FileReader("burbuja.txt");
             
             // Crear analizador léxico
             AnalizadorLexico lexer = new AnalizadorLexico(reader);
