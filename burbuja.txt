@@ -1,4 +1,4 @@
-inicioasd
+inicio
     entero arr, n, i, j;
     
     leer(n);
